@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "com.dangrover.danphotogallery"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.dangrover.danphotogallery"
-        minSdk = 31
-        targetSdk = 34
+        minSdk = 32
+        targetSdk = 35
         versionCode = 1
         versionName = "1.0"
 
