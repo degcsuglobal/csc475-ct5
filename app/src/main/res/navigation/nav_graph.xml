@@ -19,6 +19,6 @@
     <fragment
         android:id="@+id/photoFragment"
         android:name="com.dangrover.danphotogallery.PhotoFragment"
-        android:label="fragment_photo"
+        android:label="Photo"
         tools:layout="@layout/fragment_photo" />
 </navigation>
