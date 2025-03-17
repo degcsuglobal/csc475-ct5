@@ -21,38 +21,23 @@ import com.dangrover.danphotogallery.databinding.FragmentFirstBinding
 class FirstFragment : Fragment() {
 
     private var _binding: FragmentFirstBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
-    private val binding get() = _binding!!
+    private val binding get() = _binding!! // This property is only valid between onCreateView and onDestoryView
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentFirstBinding.inflate(inflater, container, false)
         return binding.root
-
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        /*binding.buttonFirst.setOnClickListener {
-            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-        }*/
-
         binding.recycler.layoutManager = GridLayoutManager(requireContext(), 3)
-
         val adapter = PhotoAdapter(requireContext())
-
         binding.recycler.adapter = adapter
-
     }
-
-
-    // the photos are all stored in the assets folder, there are 10
 
     class PhotoAdapter(
         private val context: Context,
@@ -70,18 +55,10 @@ class FirstFragment : Fragment() {
         }
 
         override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-            // generate photo ID and drawable from path, they are all numbered numerically as e.g. "photo0.png" in drawable and stored as pngs.
-
+            // Get photo with this number from drawables and set it in the image view
             val photoId = position + 1
-            val drawableName = "photo$photoId"
-            val drawableResId = context.resources.getIdentifier(drawableName, "drawable", context.packageName)
-
-            Log.d("PhotoAdapter", "Photo ID: $photoId")
-
-
-
-            // make the drawable
-            val drawable: Drawable? = ContextCompat.getDrawable(context, drawableResId)
+            val drawable: Drawable? = ContextCompat.getDrawable(context,
+                context.resources.getIdentifier("photo$photoId", "drawable", context.packageName))
             holder.photoImageView.setImageDrawable(drawable)
 
          /*   holder.cardView.setOnClickListener {
@@ -89,7 +66,7 @@ class FirstFragment : Fragment() {
             }*/
         }
 
-        override fun getItemCount(): Int = 6
+        override fun getItemCount(): Int = 12
     }
 
 
